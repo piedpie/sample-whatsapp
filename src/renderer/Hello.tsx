@@ -44,6 +44,8 @@ export const Hello = () => {
   };
   return (
     <div>
+      <h1>We have set puppeteer.executablePath to:</h1>
+      <h2>C:\Program Files\Google\Chrome\Application\chrome.exe</h2>
       {!qr && (
         <input
           type="button"
