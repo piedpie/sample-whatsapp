@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import QRCode from 'react-qr-code';
+import { Start } from './Start';
 
 // eslint-disable-next-line import/prefer-default-export
-export const Hello = () => {
+export const Whatsapp = () => {
   const [qr, setQr] = useState('');
   const [ready, setReady] = useState(false);
   const [auth, setAuth] = useState(false);
@@ -44,26 +45,17 @@ export const Hello = () => {
   };
   return (
     <div>
-      <h1>We have set puppeteer.executablePath to:</h1>
-      <h2>C:\Program Files\Google\Chrome\Application\chrome.exe</h2>
-      {!qr && (
-        <input
-          type="button"
-          onClick={startWhatsappClient}
-          value="Start whatsapp client!"
-        />
-      )}
-
+     <Start qr={qr}></Start>
       {qr && (
         <div className="d-flex justify-content-center mt-2">
           <QRCode value={qr} />
         </div>
       )}
 
-      {qr && <h1>QR recieved at: {new Date().toLocaleTimeString()}</h1>}
+      {qr && <h1>QR received at: {new Date().toLocaleTimeString()}</h1>}
       {auth && <h1>Authenticated at: {new Date().toLocaleTimeString()}</h1>}
       {authFailed && (
-        <h1>Authentiction failed at: {new Date().toLocaleTimeString()}</h1>
+        <h1>Authentication failed at: {new Date().toLocaleTimeString()}</h1>
       )}
       {ready && <h1>Client ready at: {new Date().toLocaleTimeString()}</h1>}
       {disconnected && (
